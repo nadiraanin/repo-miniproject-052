@@ -31,7 +31,7 @@
         async function hitung() {
             const jml = document.getElementById('jumlah').value;
             const jns = document.getElementById('jenis').value;
-            const url = `GANTI_DENGAN_URL_FUNCTION_KAMU?jumlah=${jml}&jenis=${jns}`;
+            const url = `https://func-serverless-052-e2d7bddubydhfjgz.eastasia-01.azurewebsites.net/api/KalkulatorBiaya?jumlah=${jml}&jenis=${jns}`;
             
             try {
                 const response = await fetch(url);
