@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Project - Nadira</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 50px; }
+        .box { background: white; padding: 30px; border-radius: 10px; width: 350px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        input, select, button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ddd; box-sizing: border-box;}
+        button { background: #1f4e79; color: white; border: none; cursor: pointer; }
+        #hasil { margin-top: 20px; display: none; padding: 15px; background: #e7f3ff; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>Estimasi Konsumsi Mahasiswa</h3>
+        <p style="font-size: 0.8em;">Oleh: Nadira Anindita - 0920240052</p>
+        <input type="number" id="jumlah" placeholder="Jumlah Peserta">
+        <select id="jenis">
+            <option value="snack">Snack (Rp15.000)</option>
+            <option value="makan">Makan (Rp30.000)</option>
+            <option value="lengkap">Lengkap (Rp45.000)</option>
+        </select>
+        <button onclick="hitung()">Hitung Biaya</button>
+        <div id="hasil">
+            <strong>Hasil Estimasi:</strong>
+            <p id="txtTotal" style="color: #27ae60; font-weight: bold; font-size: 1.2em;"></p>
+        </div>
+    </div>
+    <script>
+        async function hitung() {
+            const jml = document.getElementById('jumlah').value;
+            const jns = document.getElementById('jenis').value;
+            const url = `GANTI_DENGAN_URL_FUNCTION_KAMU?jumlah=${jml}&jenis=${jns}`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                document.getElementById('hasil').style.display = 'block';
+                document.getElementById('txtTotal').innerText = `Total: Rp ${data.total.toLocaleString()}`;
+            } catch (e) { alert("API belum terhubung atau CORS belum aktif!"); }
+        }
+    </script>
+</body>
+</html>
